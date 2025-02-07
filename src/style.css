@@ -16,11 +16,30 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(170deg, rgb(18, 18, 18) 5%, rgb(0, 0, 0));
+  background: linear-gradient(170deg, rgb(38, 38, 38) 5%, rgb(0, 0, 0));
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   color: white;
+}
+
+
+body::-webkit-scrollbar {
+  width: px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(20, 20, 20); 
+  border-radius: 10px; 
+}
+
+body {
+  scrollbar-width: thin; 
+  scrollbar-color: black transparent; 
 }
 
 header {
@@ -35,15 +54,28 @@ header h1 {
 }
 
 h2 {
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
   margin: 0px;
 }
 
+h3 {
+  padding-bottom: 0rem;
+  margin: 0px;
+}
+
+h4 {
+  font-weight: 200;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem;
+  color: rgb(121, 121, 121);
+  line-height: 1rem;
+}
 
 .button-container {
   display: flex;
+  align-items: center;
   gap: 10px;
-  margin-top: 0;
 }
 
 .icon-button {
@@ -54,7 +86,9 @@ h2 {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 8px; 
-} 
+  display: inline-flex;
+  align-items: center; 
+}
 
 .icon-button img {
   width: 100%;
@@ -66,13 +100,11 @@ h2 {
 .location-button {
   background: none;
   cursor: pointer;
-  padding: 0px;
-  width: 1.1rem;
-  height: 1.1rem;
+  padding: 0;
+  width: 1.1rem; 
+  height: 1.1rem; 
   border: none;
   border-radius: 8px;
-  margin-left: 5px;
-  line-height: 2rem;
 }
 
 .location-button img {
@@ -101,10 +133,19 @@ h2 {
 }
 
 #text {
-  text-align: center;
+  text-align: left;
   width: 60%;
   max-width: 800px;
   margin: 0 auto;
+}
+
+#text button {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+
 }
 
 #projects {
@@ -112,10 +153,32 @@ h2 {
   overflow: hidden;
   position: relative;
   width: 100%;
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
   margin: 0 auto;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 1s ease-out, opacity 0.5s ease-out;
+}
+
+#projects.show {
+  display: flex;
+  max-height: 500px;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-container {
+  animation: fadeIn 0.5s ease-out;
 }
 
 p {
@@ -143,6 +206,8 @@ a {
   font-weight: 200;
   font-size: 2.5rem;
   text-align: left;
+  color: white;
+  padding-bottom: 0;
 }
 
 .maintext{
@@ -152,13 +217,19 @@ a {
   margin-bottom: 2rem;
 }
 
+button {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+
 .toggle-button {
   background: none;
   fill: var(--main-color);
   border: none;
   cursor: pointer;
   margin-left: 10px;
-  padding: 0;
 }
 
 .toggle-button img {

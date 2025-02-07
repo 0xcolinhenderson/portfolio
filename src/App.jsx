@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./style.css";
 import Carousel from "./Carousel";
+import Typewriter from "typewriter-effect";
 
 const items = [
   "Item 1",
@@ -11,6 +12,7 @@ const items = [
 
 const App = () => {
   const [showProjects, setShowProjects] = useState(false);
+
   const dummy = false;
   const toggleProjects = () => {
     setShowProjects(!showProjects);
@@ -37,14 +39,30 @@ const App = () => {
             </button>
           </a>
           <button className="location-button">
-              <img src="/location.svg" alt="location-icon" />
+            <img src="/location.svg" alt="location-icon" />
           </button>
           <p className="location-text">santa cruz, ca</p>
         </div>
+        <h4>[ last updated: 2/07/25 0:25:09 ]</h4>
       </header>
       <div id="content">
         <section id="text">
-          <h2 className="maintext"><span style={{ fontWeight: "normal", color: "var(--main-color)" }}>hi!</span> i'm colin henderson.</h2>
+          <h2 className="maintext">
+            <Typewriter
+              options={{
+                autoStart: true,
+                loop: false,
+                delay: 75,
+              }}
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString('<span style="font-weight: normal; color: var(--main-color);">hi!</span>')
+                  .pauseFor(2000) 
+                  .typeString(' i\'m colin henderson.')
+                  .start();
+              }}
+            />
+          </h2>
           <p align="left">
             I'm currently a third year student at <a target="_blank" href="https://engineering.ucsc.edu/">UC Santa Cruz</a> studying Computer Science. I mainly
             focus on building web applications, with an emphasis on Python and React. {<br />}{<br />}
@@ -53,41 +71,29 @@ const App = () => {
           </p>
         </section>
         <section id="text">
-          <h2 className="textheader">
-            projects
-            <button className="toggle-button hover-grow" onClick={toggleProjects}>
-              <img src={showProjects ? "/down.svg" : "/up.svg"} alt="toggle-icon" />
+          <h3 className="textheader">
+            <button className="textheader toggle-button hover-grow" onClick={toggleProjects}>
+              projects&nbsp;<img src={showProjects ? "/down.svg" : "/up.svg"} alt="toggle-icon" />
             </button>
-          </h2>
+          </h3>
         </section>
-        {showProjects && (
-          <section id="projects" className="show">
-            <Carousel items={items} />
-          </section>
-        )}
-        <section id="text">
-          <h2 className="textheader">
-            resume
-            <button className="toggle-button hover-grow" onClick={void 0}>
-              <img src={dummy ? "/down.svg" : "/up.svg"} alt="toggle-icon" />
-            </button>
-          </h2>
+        <section id="projects" className={showProjects ? "show" : ""}>
+          <Carousel items={items} />
         </section>
         <section id="text">
-          <h2 className="textheader">
-            coursework
-            <button className="toggle-button hover-grow" onClick={void 0}>
-              <img src={dummy ? "/down.svg" : "/up.svg"} alt="toggle-icon" />
-            </button>
-          </h2>
+          <button className="textheader toggle-button hover-grow" style={{ paddingBottom: '2rem' }} onClick={void 0}>
+            coursework&nbsp;<img src={dummy ? "/down.svg" : "/up.svg"} alt="toggle-icon" />
+          </button>
         </section>
         <section id="text">
-          <h2 className="textheader">
-            contact
-            <button className="toggle-button hover-grow" onClick={void 0}>
-              <img src={dummy ? "/down.svg" : "/up.svg"} alt="toggle-icon" />
-            </button>
-          </h2>
+          <button className="textheader toggle-button hover-grow" style={{ paddingBottom: '2rem' }} onClick={void 0}>
+            contact&nbsp;<img src={dummy ? "/down.svg" : "/up.svg"} alt="toggle-icon" />
+          </button>
+        </section>
+        <section id="text">
+          <button className="textheader toggle-button hover-grow" style={{ paddingBottom: '2rem' }} onClick={void 0}>
+            resume&nbsp;<img src={"/download.svg"} alt="toggle-icon" />
+          </button>
         </section>
       </div>
     </div>
