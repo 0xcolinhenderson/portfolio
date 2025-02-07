@@ -1,3 +1,7 @@
+:root {
+  --main-color: rgb(255, 123, 0);
+}
+
 html, body {
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -30,6 +34,12 @@ header h1 {
   margin-bottom: 0.3rem;
 }
 
+h2 {
+  padding-bottom: 1.5rem;
+  margin: 0px;
+}
+
+
 .button-container {
   display: flex;
   gap: 10px;
@@ -53,13 +63,45 @@ header h1 {
   filter: brightness(0) invert(1);
 }
 
+.location-button {
+  background: none;
+  cursor: pointer;
+  padding: 0px;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  margin-left: 5px;
+  line-height: 2rem;
+}
+
+.location-button img {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  filter: brightness(2) saturate(100%) invert(65%) sepia(100%) saturate(748%) hue-rotate(-1deg) brightness(100%) contrast(150%);
+}
+
+.location-container {
+  display: flex;
+  align-items: center;
+}
+
+.location-text {
+  color: var(--main-color);
+  font-size: 0.8rem;
+  font-weight: 200;
+  margin:0px;
+  line-height: 1.5rem;
+}
+
+
 .icon-button:hover img {
-  filter: brightness(0) saturate(100%) invert(74%) sepia(100%) saturate(748%) hue-rotate(1deg) brightness(100%) contrast(101%);
+  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
 }
 
 #text {
   text-align: center;
-  padding: 20px;
   width: 60%;
   max-width: 800px;
   margin: 0 auto;
@@ -84,7 +126,7 @@ p {
 a {
   font-weight: 200;
   text-decoration: none;
-  color: rgb(255, 170, 0);
+  color: var(--main-color);
 }
 
 #content {
@@ -97,12 +139,49 @@ a {
   max-width: 100%;
 }
 
-.greeting {
+.textheader {
+  font-weight: 200;
+  font-size: 2.5rem;
+  text-align: left;
+}
+
+.maintext{
   font-weight: 200;
   font-size: 3rem;
   text-align: left;
-  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
+
+.toggle-button {
+  background: none;
+  fill: var(--main-color);
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 0;
+}
+
+.toggle-button img {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: transparent;
+  filter: brightness(0) invert(1);
+}
+
+.toggle-button:hover img {
+  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
+}
+
+.hover-grow {
+  transition: transform 0.3s, color 0.3s;
+  transform-origin: center;
+}
+
+.hover-grow:hover {
+  transform: scale(1.25);
+  color: var(--main-color);
+}
+
 
 @media (max-width: 768px) {
   header {
