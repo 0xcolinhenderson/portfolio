@@ -1,3 +1,6 @@
+/*
+  General styling
+*/
 :root {
   --main-color: rgb(255, 123, 0);
 }
@@ -22,7 +25,6 @@ body {
   background-size: cover;
   color: white;
 }
-
 
 body::-webkit-scrollbar {
   width: px;
@@ -60,6 +62,7 @@ h2 {
 
 h3 {
   padding-bottom: 0rem;
+  max-width:auto;
   margin: 0px;
 }
 
@@ -72,186 +75,188 @@ h4 {
   line-height: 1rem;
 }
 
-.button-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icon-button {
-  background: none;
-  border: 1px solid white;
-  cursor: pointer;
-  padding: 5px; 
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 8px; 
-  display: inline-flex;
-  align-items: center; 
-}
-
-.icon-button img {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  filter: brightness(0) invert(1);
-}
-
-.location-button {
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  width: 1.1rem; 
-  height: 1.1rem; 
-  border: none;
-  border-radius: 8px;
-}
-
-.location-button img {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  filter: brightness(2) saturate(100%) invert(65%) sepia(100%) saturate(748%) hue-rotate(-1deg) brightness(100%) contrast(150%);
-}
-
-.location-container {
-  display: flex;
-  align-items: center;
-}
-
-.location-text {
-  color: var(--main-color);
-  font-size: 0.8rem;
-  font-weight: 200;
-  margin:0px;
-  line-height: 1.5rem;
-}
-
-
-.icon-button:hover img {
-  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
-}
-
-#text {
-  text-align: left;
-  width: 60%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-#text button {
-  text-align: left;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-
-}
-
-#projects {
-  padding: 20px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin: 0 auto;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 1s ease-out, opacity 0.5s ease-out;
-}
-
-#projects.show {
-  display: flex;
-  max-height: 500px;
-  opacity: 1;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.carousel-container {
-  animation: fadeIn 0.5s ease-out;
-}
-
 p {
   font-weight: 200;
   font-size: 1.4rem;
 }
 
-a {
+/*
+  Header styling
+*/
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.linkButton {
+  background: none;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 5px; 
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 8px; 
+  display: inline-flex;
+  align-items: center; 
+}
+
+.linkButton img {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  filter: brightness(0) invert(1);
+}
+
+.linkButton:hover img {
+  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
+}
+
+#location {
+  width: 1.1rem; 
+  height: 1.1rem; 
+  filter: brightness(2) saturate(100%) invert(65%) sepia(100%) saturate(748%) hue-rotate(-1deg) brightness(100%) contrast(150%);
+}
+
+#location-text {
+  color: var(--main-color);
+  font-size: 0.8rem;
+  font-weight: 200;
+  margin: -5px;
+  line-height: 1.5rem;
+}
+
+/*
+  Main content styling
+*/
+
+#content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Sections */
+
+.menu {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  gap: 20px;
+}
+
+section {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#intro {
+  width: auto;
+  margin-bottom: 20px;
+}
+
+#resume img{
+  width: 1.2rem;
+  height: 1.2rem;
+  background: transparent;
+  filter: brightness(0) invert(1);
+}
+
+#resume:hover img {
+  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
+}
+
+.resumeDownload {
+  font-weight: 200;
+  text-decoration: none;
+  color: white;
+}
+
+#download {
+  margin-left: 5px;
+}
+
+.link {
   font-weight: 200;
   text-decoration: none;
   color: var(--main-color);
 }
 
-#content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 20px;
-  max-width: 100%;
-}
-
-.textheader {
+.sectionHeader {
   font-weight: 200;
   font-size: 2.5rem;
   text-align: left;
   color: white;
+  display: inline-block;
   padding-bottom: 0;
+  position: relative;
 }
 
-.maintext{
+.sectionHeader::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  border-radius: 5px;
+  background-color: var(--main-color);
+  transition: width 0.5s ease-in-out; 
+}
+
+.active {
+  color: var(--main-color);
+}
+
+.active::after {
+  width: 50%;
+}
+
+.title{
   font-weight: 200;
   font-size: 3rem;
   text-align: left;
   margin-bottom: 2rem;
+  width: 100%
 }
 
-button {
-  color: inherit;
-  font: inherit;
+.hover-effect {
+  transition: color 0.2s;
   cursor: pointer;
 }
 
-
-.toggle-button {
-  background: none;
-  fill: var(--main-color);
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.toggle-button img {
-  width: 1.5rem;
-  height: 1.5rem;
-  background: transparent;
-  filter: brightness(0) invert(1);
-}
-
-.toggle-button:hover img {
-  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
-}
-
-.hover-grow {
-  transition: transform 0.3s, color 0.3s;
-  transform-origin: center;
-}
-
-.hover-grow:hover {
-  transform: scale(1.25);
+.hover-effect:hover {
   color: var(--main-color);
 }
+
+.displayedContent {
+  width: 100%;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+}
+
+.displayedContent.fade-in {
+  opacity: 1;
+}
+
+.displayedContent.fade-out {
+  opacity: 0;
+}
+
 
 
 @media (max-width: 768px) {
@@ -260,27 +265,12 @@ button {
     padding-left: 0;
   }
 
-  .button-container {
+  .header-icons {
     justify-content: center;
   }
-}
 
-@media (max-width: 480px) {
-  header {
-    display: flex;
+  .horizontal-sections {
     flex-direction: column;
     align-items: center;
-  }
-
-  .button-container {
-    margin-top: 0.5rem;
-  }
-
-  #intro {
-    padding: 10px;
-  }
-
-  #projects {
-    padding: 5px;
   }
 }
