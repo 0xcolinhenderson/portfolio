@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './style.css';
 
 const Form = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
   const [errorMessage, setErrorMessage] = useState('');
   const [fadeOut, setFadeOut] = useState(false);
   const [messageType, setMessageType] = useState('');
+
+  const form = useRef();
+
+  const [formData, setFormData] = useState({
+    from_name: '',
+    from_email: '',
+    message: ''
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,22 +23,11 @@ const Form = () => {
     });
   };
 
-  const sanitizeInput = (input) => {
-    const element = document.createElement('div');
-    element.innerText = input;
-    return element.innerHTML;
-  };
-
-  const handleSubmit = (e) => {
+  const sendEmail = async(e) => {
     e.preventDefault();
-    const sanitizedData = {
-      name: sanitizeInput(formData.name),
-      email: sanitizeInput(formData.email),
-      message: sanitizeInput(formData.message)
-    };
 
-    if (!sanitizedData.name || !sanitizedData.email || !sanitizedData.message) {
-      setErrorMessage("All fields are required.");
+    if (!formData.from_name.trim() || !formData.from_email.trim() || !formData.message.trim()) {
+      setErrorMessage("Please fill out all fields.");
       setMessageType('failure');
       setFadeOut(false);
       setTimeout(() => setFadeOut(true), 4500);
@@ -42,47 +35,54 @@ const Form = () => {
       return;
     }
 
-    if (!/\S+@\S+\.\S+/.test(sanitizedData.email)) {
-      setErrorMessage("Please enter a valid email address.");
-      setMessageType('failure');
-      setFadeOut(false);
-      setTimeout(() => setFadeOut(true), 4500);
-      setTimeout(() => setErrorMessage(''), 5000);
-      return;
-    }
-
-    console.log("Form submitted with sanitized data:", sanitizedData);
-    setErrorMessage("Form submitted.");
-    setMessageType('success');
-    setFadeOut(false);
-    setTimeout(() => setFadeOut(true), 4500);
-    setTimeout(() => setErrorMessage(''), 5000);
+    emailjs.sendForm(
+      import.meta.env.VITE_SERVICE_ID,
+      import.meta.env.VITE_TEMPLATE_ID,
+      form.current,
+      {
+        publicKey: import.meta.env.VITE_PUBLIC_KEY,
+        gRecaptchaResponse: token,
+      }
+    )
+      .then(
+        () => {
+          setErrorMessage("Form submitted successfully.");
+          e.target.reset();
+          setFormData({ from_name: '', from_email: '', message: '' });
+          setMessageType('success');
+          setFadeOut(false);
+          setTimeout(() => setFadeOut(true), 4500);
+          setTimeout(() => setErrorMessage(''), 5000);
+        },
+        (error) => {
+          setErrorMessage("Error submitting form."); 
+          setMessageType('failure');
+          setFadeOut(false);
+          setTimeout(() => setFadeOut(true), 4500);
+          setTimeout(() => setErrorMessage(''), 5000);
+        }
+      );
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form ref={form} onSubmit={sendEmail}>
       <div className="form-group">
-        <label>
-          name
-        </label>
-        <input type="text" name="name" placeholder="name" value={formData.name} onChange={handleChange} />
+        <label>name</label>
+        <input type="text" name="from_name" placeholder="name" value={formData.from_name} onChange={handleChange} />
       </div>
       <div className="form-group">
-        <label>
-          email
-        </label>
-        <input type="email" name="email" placeholder="email@email.com" value={formData.email} onChange={handleChange} />
+        <label>email</label>
+        <input type="email" name="from_email" placeholder="email@email.com" value={formData.from_email} onChange={handleChange} />
       </div>
       <div className="form-group-full">
-        <label>
-          message
-        </label>
+        <label>message</label>
         <textarea name="message" placeholder="your message here..." value={formData.message} onChange={handleChange}></textarea>
       </div>
       <div className="submit-container">
         <input type="submit" value="submit" />
         {errorMessage && <div className={`error-message ${fadeOut ? 'fade-out' : ''}`} id={messageType}>{errorMessage}</div>}
       </div>
+      
     </form>
   );
 };
