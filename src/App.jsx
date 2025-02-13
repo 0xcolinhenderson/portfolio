@@ -163,7 +163,7 @@ const App = () => {
             )}
             {selectedTab === "resume" && (
               <>
-                <p>Resume</p>
+                <embed className="resume" src="/portfolio/resume.pdf"/>
               </>
             )}
           </div>
