@@ -116,3 +116,14 @@
     background-color: #231c85;
     color: #ffffff; 
   }
+
+.fade-in-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.fade-in-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

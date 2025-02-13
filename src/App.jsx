@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+
 import Typewriter from "typewriter-effect";
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 
 import ProjectCard from "./ProjectCard";
+import { classes } from "./classes";
+import { projects } from "./projects";
+
+import './datatable.css';
 import "./style.css";
 
 const App = () => {
@@ -16,33 +23,17 @@ const App = () => {
       setTimeout(() => {
         setSelectedTab(tab);
         setFade("fade-in");
-      }, 400);
+      }, 500);
     }
+  };
+
+  const rowWithFadedelay = (data, { rowIndex }) => {
+    return `fade-in-row delay-${rowIndex}`;
   };
 
   useEffect(() => {
     setFade("fade-in");
   }, [selectedTab]);
-
-  // Projects
-  const projects = [
-    {
-      image: '/portfolio/projects/repotoresume.jpg',
-      name: 'RepoToResume',
-      subtitle: 'A web application that generates a resume from your GitHub repositories.',
-      languages: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS'],
-      webLink: 'https://repotoresu.me',
-      githubLink: 'https://github.com/charlesphu/SpeedFill/',
-    },
-    {
-      image: '/portfolio/projects/speedfill.jpg',
-      name: 'SpeedFill',
-      subtitle: 'Match your resume to a job description, or automate cover letter generation in just a few clicks.',
-      languages: ['JavaScript', 'Material-UI', 'React', 'Next.js'],
-      webLink: 'speed-fill.vercel.app',
-      githubLink: 'https://github.com/charlesphu/SpeedFill/',
-    },
-  ];
 
   return (
     <div>
@@ -142,7 +133,14 @@ const App = () => {
             )}
             {selectedTab === "coursework" && (
               <>
-                <p>Coursework</p>
+                <p>University of California, Santa Cruz <span className="subtitle">2022 - Present</span></p>
+                <DataTable className="custom-datatable" value={classes} rowClassName={rowWithFadedelay}tableStyle={{ fontWeight:"100", minWidth: '50rem' }}>
+                  <Column field="quarter" header="Quarter"></Column>
+                  <Column field="title" header="Title"></Column>
+                  <Column field="name" header="Name"></Column>
+                  <Column field="grade" header="Grade"></Column>
+                  <Column field="units" header="Units"></Column>
+                </DataTable>
               </>
             )}
             {selectedTab === "contact" && (

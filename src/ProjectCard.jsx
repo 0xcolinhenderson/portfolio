@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './ProjectCard.css';
 
 const ProjectCard = ({ image, name, subtitle, languages, webLink, githubLink }) => {
+  const cardRef = useRef(null);
+
   const getLanguageClass = (language) => {
     switch (language.toLowerCase()) {
       case 'javascript':
@@ -21,8 +23,31 @@ const ProjectCard = ({ image, name, subtitle, languages, webLink, githubLink }) 
     }
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="project-card">
+    <div className="project-card fade-in-card" ref={cardRef}>
       <img src={image} alt={`${name} project`} className="project-image" />
       <div className="project-info">
         <h3 className="project-name">{name}</h3>

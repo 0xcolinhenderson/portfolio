@@ -3,6 +3,7 @@
 */
 :root {
   --main-color: rgb(255, 123, 0);
+  --subtitle-color: rgb(118, 118, 118);
 }
 
 html, body {
@@ -88,6 +89,12 @@ p {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.subtitle {
+  margin-left: 10px;
+  font-size: 1.1rem;
+  color: var(--subtitle-color);
 }
 
 .linkButton {
