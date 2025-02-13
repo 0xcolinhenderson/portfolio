@@ -8,23 +8,30 @@ import { Column } from 'primereact/column';
 import ProjectCard from "./ProjectCard";
 import { classes } from "./classes";
 import { projects } from "./projects";
+import { fetchLastCommitDate } from "./fetchCommit";
+import Form from "./Form";
 
 import "./style.css";
 
 const App = () => {
-  //tabs
   const [selectedTab, setSelectedTab] = useState("intro");
   const [fade, setFade] = useState("fade-in");
+  const [lastUpdated, setLastUpdated] = useState('');
 
-  //form
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [errorMessage, setErrorMessage] = useState('');
-  const [fadeOut, setFadeOut] = useState(false);
-  const [messageType, setMessageType] = useState('');
+  useEffect(() => {
+    const getLastCommitDate = async () => {
+      const date = await fetchLastCommitDate();
+      if (date) {
+        setLastUpdated(date);
+      }
+    };
+
+    getLastCommitDate();
+  }, []);
+
+  useEffect(() => {
+    setFade("fade-in");
+  }, [selectedTab]);
 
   const handleTabClick = (tab) => {
     if (tab !== selectedTab) {
@@ -34,58 +41,6 @@ const App = () => {
         setFade("fade-in");
       }, 500);
     }
-  };
-
-  useEffect(() => {
-    setFade("fade-in");
-  }, [selectedTab]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const sanitizeInput = (input) => {
-    const element = document.createElement('div');
-    element.innerText = input;
-    return element.innerHTML;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const sanitizedData = {
-      name: sanitizeInput(formData.name),
-      email: sanitizeInput(formData.email),
-      message: sanitizeInput(formData.message)
-    };
-
-    if (!sanitizedData.name || !sanitizedData.email || !sanitizedData.message) {
-      setErrorMessage("All fields are required.");
-      setMessageType('failure');
-      setFadeOut(false);
-      setTimeout(() => setFadeOut(true), 4500);
-      setTimeout(() => setErrorMessage(''), 5000);
-      return;
-    }
-
-    if (!/\S+@\S+\.\S+/.test(sanitizedData.email)) {
-      setErrorMessage("Please enter a valid email address.");
-      setMessageType('failure');
-      setFadeOut(false);
-      setTimeout(() => setFadeOut(true), 4500);
-      setTimeout(() => setErrorMessage(''), 5000);
-      return;
-    }
-
-    console.log("Form submitted with sanitized data:", sanitizedData);
-    setErrorMessage("Form submitted.");
-    setMessageType('success');
-    setFadeOut(false);
-    setTimeout(() => setFadeOut(true), 4500);
-    setTimeout(() => setErrorMessage(''), 5000);
   };
 
   return (
@@ -105,7 +60,7 @@ const App = () => {
           <img id="location" src="/portfolio/location.svg" alt="location-icon" />
           <p id="location-text">santa cruz, ca</p>
         </div>
-        <h4>[ last updated: 2/10/25 23:19:19 ]</h4>
+        <h4>[ last updated: {lastUpdated} ]</h4>
       </header>
       <div id="content">
         <section id="intro">
@@ -203,30 +158,7 @@ const App = () => {
             )}
             {selectedTab === "contact" && (
               <>
-                <form onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <label>
-                      name
-                    </label>
-                    <input type="text" name="name" placeholder="name" value={formData.name} onChange={handleChange} />
-                  </div>
-                  <div className="form-group">
-                    <label>
-                      email
-                    </label>
-                    <input type="email" name="email" placeholder="email@email.com" value={formData.email} onChange={handleChange} />
-                  </div>
-                  <div className="form-group-full">
-                    <label>
-                      message
-                    </label>
-                    <textarea name="message" placeholder="your message here..." value={formData.message} onChange={handleChange}></textarea>
-                  </div>
-                  <div className="submit-container">
-                    <input type="submit" value="submit" />
-                    {errorMessage && <div className={`error-message ${fadeOut ? 'fade-out' : ''}`} id={messageType}>{errorMessage}</div>}
-                  </div>
-                </form>
+                <Form />
               </>
             )}
             {selectedTab === "resume" && (
