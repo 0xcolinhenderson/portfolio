@@ -1,121 +1,142 @@
 .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    justify-items: center;
-  }
-  
-  .project-card {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    width: 80%;
-    color: var(--main-color);
-    margin: 20px 0;
-    background-color: transparent;
-    border: 1px solid rgba(128, 128, 128, 0.2);
-  }
-  
-  .project-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .project-info {
-    background: linear-gradient(to top, rgba(144, 144, 144, 0), rgba(255, 255, 255, 0.05));
-    padding: 40px;
-    margin: 0;
-  }
-  
-  .project-name {
-    font-size: 1.5rem;
-    font-weight: 200;
-    margin: 10px 0;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  justify-items: center;
+}
 
-  .project-subtitle {
-    font-size: 1rem;
-    font-weight: 200;
-    color: grey;
-    font-style: italic;
-    margin-top: 0px;
-  }
-  
-  .project-languages {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 10px;
-  }
+.project-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  width: 80%;
+  color: var(--main-color);
+  margin: 20px 0;
+  background-color: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+}
 
-  .separator {
-    border: none;
-    border-top: 1px solid rgba(128, 128, 128, 0.2);
-    margin-bottom: 10px;
-  }
-  
-  .project-links {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .project-link {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 200;
-    display: flex;
-    align-items: center;
-  }
-  
-  .github-icon {
-    width: 1rem;
-    height: 1rem;
-    margin-left: 5px;
-    border-radius: 50%;
-    padding: 2px;
-    background: transparent;
-    filter: brightness(0) invert(1);
-  }
 
-  /* langauges */
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 
-  .language-badge {
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    color: white; 
-  }
-  
-  .language-javascript {
-    background-color: #f0db4f;
-    color: #323330; 
-  }
-  
-  .language-react {
-    background-color: #eb1212;
-    color: #ffffff;
-  }
-  
-  .language-nextjs {
-    background-color: #292c36;
-    color: #ffffff;
-  }
-  
-  .language-tailwind {
-    background-color: #38b2ac; 
-    color: #ffffff; 
-  }
-  
-  .language-python {
-    background-color: #306998;
-    color: #ffffff; 
-  }
+.project-info {
+  background: linear-gradient(to top, rgba(144, 144, 144, 0), rgba(255, 255, 255, 0.05));
+  padding: 40px;
+  margin: 0;
+}
 
-  .language-mui {
-    background-color: #231c85;
-    color: #ffffff; 
-  }
+.project-name {
+  font-size: 1.5rem;
+  font-weight: 200;
+  margin: 10px 0;
+}
+
+.project-subtitle {
+  font-size: 1rem;
+  font-weight: 200;
+  color: grey;
+  font-style: italic;
+  margin-top: 0px;
+}
+
+.project-languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  margin-bottom: 10px;
+}
+
+.project-links {
+  display: flex;
+  gap: 10px;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.project-link:hover {
+  color: var(--main-color);
+}
+
+.github-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 5px;
+  border-radius: 50%;
+  padding: 2px;
+  background: transparent;
+  filter: brightness(0) invert(1);
+}
+
+/* languages */
+
+.language-badge {
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: white; 
+}
+
+.language-javascript {
+  background-color: #f0db4f;
+  color: #323330; 
+}
+
+.language-react {
+  background-color: #eb1212;
+  color: #ffffff;
+}
+
+.language-nextjs {
+  background-color: #292c36;
+  color: #ffffff;
+}
+
+.language-tailwind {
+  background-color: #38b2ac; 
+  color: #ffffff; 
+}
+
+.language-python {
+  background-color: #306998;
+  color: #ffffff; 
+}
+
+.language-mui {
+  background-color: #231c85;
+  color: #ffffff; 
+}
+
+.language-flask {
+  background-color: #1c8531;
+  color: #ffffff; 
+}
+
+.language-bootstrap {
+  background-color: #7504ff;
+  color: #ffffff; 
+}
+
+.language-pytorch {
+  background-color: #ff3204;
+  color: #ffffff; 
+}
 
 .fade-in-card {
   opacity: 0;

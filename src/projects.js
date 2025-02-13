@@ -2,7 +2,7 @@ export const projects = [
         {
           image: '/portfolio/projects/repotoresume.jpg',
           name: 'RepoToResume',
-          subtitle: 'A web application that generates a resume from your GitHub repositories.',
+          subtitle: 'Generates a stylized resume card from a public GitHub repository!',
           languages: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS'],
           webLink: 'https://repotoresu.me',
           githubLink: 'https://github.com/charlesphu/SpeedFill/',
@@ -14,5 +14,12 @@ export const projects = [
           languages: ['JavaScript', 'Material-UI', 'React', 'Next.js'],
           webLink: 'https://speed-fill.vercel.app',
           githubLink: 'https://github.com/charlesphu/SpeedFill/',
+        },
+        {
+          image: '/portfolio/projects/dermascan.jpg',
+          name: 'DermaScan',
+          subtitle: 'Leveraging machine learning to detect different kinds of acne, and provide tailored treatment options. Took home a hackathon prize for this one!',
+          languages: ['Python', 'Flask', 'Bootstrap 5', 'PyTorch'],
+          githubLink: 'https://github.com/tiwariakshat47/DermaScan/',
         },
 ];

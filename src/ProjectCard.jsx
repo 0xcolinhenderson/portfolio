@@ -18,6 +18,12 @@ const ProjectCard = ({ image, name, subtitle, languages, webLink, githubLink }) 
         return 'language-python';
       case 'material-ui':
         return 'language-mui';
+      case 'flask':
+        return 'language-flask';
+      case 'bootstrap 5':
+        return 'language-bootstrap';
+      case 'pytorch':
+        return 'language-pytorch';
       default:
         return '';
     }

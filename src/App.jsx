@@ -9,13 +9,22 @@ import ProjectCard from "./ProjectCard";
 import { classes } from "./classes";
 import { projects } from "./projects";
 
-import './datatable.css';
 import "./style.css";
 
 const App = () => {
-  // Tab & Fade State
+  //tabs
   const [selectedTab, setSelectedTab] = useState("intro");
   const [fade, setFade] = useState("fade-in");
+
+  //form
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [fadeOut, setFadeOut] = useState(false);
+  const [messageType, setMessageType] = useState('');
 
   const handleTabClick = (tab) => {
     if (tab !== selectedTab) {
@@ -27,13 +36,57 @@ const App = () => {
     }
   };
 
-  const rowWithFadedelay = (data, { rowIndex }) => {
-    return `fade-in-row delay-${rowIndex}`;
-  };
-
   useEffect(() => {
     setFade("fade-in");
   }, [selectedTab]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const sanitizeInput = (input) => {
+    const element = document.createElement('div');
+    element.innerText = input;
+    return element.innerHTML;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const sanitizedData = {
+      name: sanitizeInput(formData.name),
+      email: sanitizeInput(formData.email),
+      message: sanitizeInput(formData.message)
+    };
+
+    if (!sanitizedData.name || !sanitizedData.email || !sanitizedData.message) {
+      setErrorMessage("All fields are required.");
+      setMessageType('failure');
+      setFadeOut(false);
+      setTimeout(() => setFadeOut(true), 4500);
+      setTimeout(() => setErrorMessage(''), 5000);
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(sanitizedData.email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setMessageType('failure');
+      setFadeOut(false);
+      setTimeout(() => setFadeOut(true), 4500);
+      setTimeout(() => setErrorMessage(''), 5000);
+      return;
+    }
+
+    console.log("Form submitted with sanitized data:", sanitizedData);
+    setErrorMessage("Form submitted.");
+    setMessageType('success');
+    setFadeOut(false);
+    setTimeout(() => setFadeOut(true), 4500);
+    setTimeout(() => setErrorMessage(''), 5000);
+  };
 
   return (
     <div>
@@ -97,9 +150,7 @@ const App = () => {
             </section>
             <section id="resume" onClick={() => handleTabClick("resume")}>
               <h3 className={`sectionHeader hover-effect ${selectedTab === "resume" ? "active" : ""}`}>
-                <a className="resumeDownload hover-effect" href="/">
-                  resume
-                </a>
+                resume
               </h3>
             </section>
           </div>
@@ -107,12 +158,18 @@ const App = () => {
             {selectedTab === "intro" && (
               <>
                 <p>
-                  I'm currently a third year student at <a className="link" target="_blank" href="https://engineering.ucsc.edu/">UC Santa Cruz</a> studying Computer Science. I mainly
-                  focus on building web applications, with an emphasis on Python and React.
+                  I'm currently a third year student at <a className="link" target="_blank" href="https://engineering.ucsc.edu/">UC Santa Cruz</a> studying in Computer Science.
+                </p>
+                <p>
+                  I love software development, and I'm always actively looking for opportunities to learn and grow as a developer. I have experience with a variety of languages and frameworks,
+                  including C++, Python, JavaScript, C#, and Java.
                 </p>
                 <p>
                   Outside of programming, I really love writing, recording, and producing music.
                   If you're interested in getting a track produced, mixed, or mastered, please reach out to me <a className="link" href="mailto:colin.ch.henderson@gmail.com">here</a>.
+                </p>
+                <p>
+                  This site was made with React + Vite. Feel free to take a look at the source in the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
                 </p>
               </>
             )}
@@ -133,19 +190,43 @@ const App = () => {
             )}
             {selectedTab === "coursework" && (
               <>
-                <p>University of California, Santa Cruz <span className="subtitle">2022 - Present</span></p>
-                <DataTable className="custom-datatable" value={classes} rowClassName={rowWithFadedelay}tableStyle={{ fontWeight:"100", minWidth: '50rem' }}>
-                  <Column field="quarter" header="Quarter"></Column>
-                  <Column field="title" header="Title"></Column>
-                  <Column field="name" header="Name"></Column>
-                  <Column field="grade" header="Grade"></Column>
-                  <Column field="units" header="Units"></Column>
+                <p>University of California, Santa Cruz</p>
+                <p className="subtitle">2022 - Present</p>
+                <DataTable className="custom-datatable" value={classes} tableStyle={{ fontWeight: "100", minWidth: '50rem' }}>
+                    <Column field="quarter" header="Quarter"></Column>
+                    <Column field="title" header="Title"></Column>
+                    <Column field="name" header="Name"></Column>
+                    <Column field="grade" header="Grade"></Column>
+                    <Column field="units" header="Units"></Column>
                 </DataTable>
               </>
             )}
             {selectedTab === "contact" && (
               <>
-                <p>Contact</p>
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label>
+                      name
+                    </label>
+                    <input type="text" name="name" placeholder="name" value={formData.name} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label>
+                      email
+                    </label>
+                    <input type="email" name="email" placeholder="email@email.com" value={formData.email} onChange={handleChange} />
+                  </div>
+                  <div className="form-group-full">
+                    <label>
+                      message
+                    </label>
+                    <textarea name="message" placeholder="your message here..." value={formData.message} onChange={handleChange}></textarea>
+                  </div>
+                  <div className="submit-container">
+                    <input type="submit" value="submit" />
+                    {errorMessage && <div className={`error-message ${fadeOut ? 'fade-out' : ''}`} id={messageType}>{errorMessage}</div>}
+                  </div>
+                </form>
               </>
             )}
             {selectedTab === "resume" && (
