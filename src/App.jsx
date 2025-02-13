@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import "./style.css";
 import Typewriter from "typewriter-effect";
 
+import ProjectCard from "./ProjectCard";
+import "./style.css";
+
 const App = () => {
+  // Tab & Fade State
   const [selectedTab, setSelectedTab] = useState("intro");
   const [fade, setFade] = useState("fade-in");
 
@@ -20,6 +23,26 @@ const App = () => {
   useEffect(() => {
     setFade("fade-in");
   }, [selectedTab]);
+
+  // Projects
+  const projects = [
+    {
+      image: '/portfolio/projects/repotoresume.jpg',
+      name: 'RepoToResume',
+      subtitle: 'A web application that generates a resume from your GitHub repositories.',
+      languages: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS'],
+      webLink: 'https://repotoresu.me',
+      githubLink: 'https://github.com/charlesphu/SpeedFill/',
+    },
+    {
+      image: '/portfolio/projects/speedfill.jpg',
+      name: 'SpeedFill',
+      subtitle: 'Match your resume to a job description, or automate cover letter generation in just a few clicks.',
+      languages: ['JavaScript', 'Material-UI', 'React', 'Next.js'],
+      webLink: 'speed-fill.vercel.app',
+      githubLink: 'https://github.com/charlesphu/SpeedFill/',
+    },
+  ];
 
   return (
     <div>
@@ -103,9 +126,19 @@ const App = () => {
               </>
             )}
             {selectedTab === "projects" && (
-              <>
-                <p>Projects</p>
-              </>
+              <div className="projects-grid">
+                {projects.map((project, index) => (
+                  <ProjectCard
+                    key={index}
+                    image={project.image}
+                    name={project.name}
+                    subtitle={project.subtitle}
+                    languages={project.languages}
+                    webLink={project.webLink}
+                    githubLink={project.githubLink}
+                  />
+                ))}
+              </div>
             )}
             {selectedTab === "coursework" && (
               <>
