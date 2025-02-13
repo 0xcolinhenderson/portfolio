@@ -147,7 +147,7 @@ const App = () => {
               <>
                 <p>University of California, Santa Cruz</p>
                 <p className="subtitle">2022 - Present</p>
-                <DataTable className="custom-datatable" value={classes} tableStyle={{ fontWeight: "100", minWidth: '50rem' }}>
+                <DataTable className="custom-datatable scrollable" value={classes} tableStyle={{ fontWeight: "100", minWidth: '30rem' }}>
                     <Column field="quarter" header="Quarter"></Column>
                     <Column field="title" header="Title"></Column>
                     <Column field="name" header="Name"></Column>
