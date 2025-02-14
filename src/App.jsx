@@ -145,7 +145,7 @@ const App = () => {
             )}
             {selectedTab === "coursework" && (
               <>
-                <p>University of California, Santa Cruz</p>
+                <p>University of California, Santa Cruz - 3.6 GPA</p>
                 <p className="subtitle">2022 - Present</p>
                 <DataTable className="custom-datatable scrollable" value={classes} tableStyle={{ fontWeight: "100", minWidth: '30rem' }}>
                     <Column field="quarter" header="Quarter"></Column>
