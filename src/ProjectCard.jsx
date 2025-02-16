@@ -71,7 +71,7 @@ const ProjectCard = ({ image, name, subtitle, languages, webLink, githubLink }) 
           {githubLink && (
             <a href={githubLink} target="_blank" rel="noopener noreferrer" className="project-link">
               GitHub
-              <img src="/portfolio/github.svg" alt="github-icon" className="github-icon" />
+              <img src="/github.svg" alt="github-icon" className="github-icon" />
             </a>
           )}
         </div>
