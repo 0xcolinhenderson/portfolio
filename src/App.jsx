@@ -125,7 +125,7 @@ const App = () => {
                   If you're interested in getting a track produced, mixed, or mastered, please reach out to me <a className="link" href="mailto:colin.ch.henderson@gmail.com">here</a>.
                 </p>
                 <p>
-                  This site was made with React + Vite. Feel free to take a look at the source in the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
+                  This site was made with React + Vite + Vercel. Feel free to take a look at the source in the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
                 </p>
               </>
             )}
