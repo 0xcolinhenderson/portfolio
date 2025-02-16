@@ -158,6 +158,7 @@ const App = () => {
             )}
             {selectedTab === "contact" && (
               <>
+                <p>Either fill out the form below, or shoot me a message on <a className="link" href="https://linkedin.com/in/colinchenderson/" target="_blank">LinkedIn</a>.</p>
                 <Form />
               </>
             )}
