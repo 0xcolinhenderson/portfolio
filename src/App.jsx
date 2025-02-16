@@ -49,15 +49,15 @@ const App = () => {
         <h1>colin henderson</h1>
         <div className="header-icons">
           <a className="linkButton" href="https://github.com/0xcolinhenderson/" target="_blank">
-            <img src="/portfolio/github.svg" alt="github-icon" />
+            <img src="/github.svg" alt="github-icon" />
           </a>
           <a className="linkButton" href="https://linkedin.com/in/colinchenderson/" target="_blank">
-            <img src="/portfolio/linkedin.svg" alt="linkedin-icon" />
+            <img src="/linkedin.svg" alt="linkedin-icon" />
           </a>
           <a className="linkButton" href="mailto:colin.ch.henderson@gmail.com" target="_blank">
-            <img src="/portfolio/email.svg" alt="email-icon" />
+            <img src="/email.svg" alt="email-icon" />
           </a>
-          <img id="location" src="/portfolio/location.svg" alt="location-icon" />
+          <img id="location" src="/location.svg" alt="location-icon" />
           <p id="location-text">santa cruz, ca</p>
         </div>
         <h4>[ last updated: {lastUpdated} ]</h4>
@@ -163,7 +163,7 @@ const App = () => {
             )}
             {selectedTab === "resume" && (
               <>
-                <embed className="resume" src="/portfolio/resume.pdf"/>
+                <embed className="resume" src="/resume.pdf"/>
               </>
             )}
           </div>
