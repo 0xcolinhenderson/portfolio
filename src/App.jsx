@@ -165,6 +165,7 @@ const App = () => {
             )}
             {selectedTab === "resume" && (
               <>
+                <p className="subtitle">If you're on mobile, you can download it <a className="link" href="/resume.pdf" download>here</a>.</p>
                 <embed className="resume" src="/resume.pdf"/>
               </>
             )}
