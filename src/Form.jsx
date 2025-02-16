@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import validator from 'validator';
 import './style.css';
 
 const Form = () => {
@@ -35,13 +36,32 @@ const Form = () => {
       return;
     }
 
+    if (!validator.isEmail(formData.from_email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setMessageType('failure');
+      setFadeOut(false);
+      setTimeout(() => setFadeOut(true), 4500);
+      setTimeout(() => setErrorMessage(''), 5000);
+      return;
+    }
+
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+      setErrorMessage("Please complete the reCAPTCHA.");
+      setMessageType('failure');
+      setFadeOut(false);
+      setTimeout(() => setFadeOut(true), 4500);
+      setTimeout(() => setErrorMessage(''), 5000);
+      return;
+    }
+
     emailjs.sendForm(
       import.meta.env.VITE_SERVICE_ID,
       import.meta.env.VITE_TEMPLATE_ID,
       form.current,
       {
         publicKey: import.meta.env.VITE_PUBLIC_KEY,
-        gRecaptchaResponse: token,
+        gRecaptchaResponse: recaptchaResponse,
       }
     )
       .then(
@@ -79,10 +99,10 @@ const Form = () => {
         <textarea name="message" placeholder="your message here..." value={formData.message} onChange={handleChange}></textarea>
       </div>
       <div className="submit-container">
+        <div className="g-recaptcha" data-sitekey="6LfkltgqAAAAADCJoz4OBAQ_scRjn-q3aLuvKpOL"></div>
         <input type="submit" value="submit" />
         {errorMessage && <div className={`error-message ${fadeOut ? 'fade-out' : ''}`} id={messageType}>{errorMessage}</div>}
       </div>
-      
     </form>
   );
 };
