@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { Analytics } from "@vercel/analytics/react";
 
 import Typewriter from "typewriter-effect";
 import { DataTable } from 'primereact/datatable';
@@ -170,6 +171,7 @@ const App = () => {
           </div>
         </div>
       </div>
+      <Analytics />
     </div>
   );
 };
