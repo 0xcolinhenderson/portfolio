@@ -61,7 +61,7 @@ const App = () => {
           <img id="location" src="/location.svg" alt="location-icon" />
           <p id="location-text">santa cruz, ca</p>
         </div>
-        <h4>[ last updated: {lastUpdated} ]</h4>
+        <h2 className="updated-text">[ last updated: {lastUpdated} ]</h2>
       </header>
       <div id="content">
         <section id="intro">
@@ -121,11 +121,10 @@ const App = () => {
                   including C++, Python, JavaScript, C#, and Java.
                 </p>
                 <p>
-                  Outside of programming, I really love writing, recording, and producing music.
-                  If you're interested in getting a track produced, mixed, or mastered, please reach out to me <a className="link" href="mailto:colin.ch.henderson@gmail.com">here</a>.
+                  Outside of programming, I really love writing, recording, and producing music! 
                 </p>
-                <p>
-                  This site was made with React + Vite + Vercel. Feel free to take a look at the source in the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
+                <p className="subtitle">
+                  If you're interested in seeing some of my work, please check out the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
                 </p>
               </>
             )}
