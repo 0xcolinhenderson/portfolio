@@ -45,23 +45,12 @@ const Form = () => {
       return;
     }
 
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-      setErrorMessage("Please complete the reCAPTCHA.");
-      setMessageType('failure');
-      setFadeOut(false);
-      setTimeout(() => setFadeOut(true), 4500);
-      setTimeout(() => setErrorMessage(''), 5000);
-      return;
-    }
-
     emailjs.sendForm(
       import.meta.env.VITE_SERVICE_ID,
       import.meta.env.VITE_TEMPLATE_ID,
       form.current,
       {
         publicKey: import.meta.env.VITE_PUBLIC_KEY,
-        gRecaptchaResponse: recaptchaResponse,
       }
     )
       .then(
@@ -99,7 +88,6 @@ const Form = () => {
         <textarea name="message" placeholder="your message here..." value={formData.message} onChange={handleChange}></textarea>
       </div>
       <div className="submit-container">
-        <div className="g-recaptcha" data-sitekey="6LfkltgqAAAAADCJoz4OBAQ_scRjn-q3aLuvKpOL"></div>
         <input type="submit" value="submit" />
         {errorMessage && <div className={`error-message ${fadeOut ? 'fade-out' : ''}`} id={messageType}>{errorMessage}</div>}
       </div>
