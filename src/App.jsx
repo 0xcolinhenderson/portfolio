@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { Analytics } from "@vercel/analytics/react";
 
 import Typewriter from "typewriter-effect";
 import { DataTable } from 'primereact/datatable';
@@ -49,18 +50,18 @@ const App = () => {
         <h1>colin henderson</h1>
         <div className="header-icons">
           <a className="linkButton" href="https://github.com/0xcolinhenderson/" target="_blank">
-            <img src="/portfolio/github.svg" alt="github-icon" />
+            <img src="/github.svg" alt="github-icon" />
           </a>
           <a className="linkButton" href="https://linkedin.com/in/colinchenderson/" target="_blank">
-            <img src="/portfolio/linkedin.svg" alt="linkedin-icon" />
+            <img src="/linkedin.svg" alt="linkedin-icon" />
           </a>
           <a className="linkButton" href="mailto:colin.ch.henderson@gmail.com" target="_blank">
-            <img src="/portfolio/email.svg" alt="email-icon" />
+            <img src="/email.svg" alt="email-icon" />
           </a>
-          <img id="location" src="/portfolio/location.svg" alt="location-icon" />
+          <img id="location" src="/location.svg" alt="location-icon" />
           <p id="location-text">santa cruz, ca</p>
         </div>
-        <h4>[ last updated: {lastUpdated} ]</h4>
+        <h2 className="updated-text">[ last updated: {lastUpdated} ]</h2>
       </header>
       <div id="content">
         <section id="intro">
@@ -120,11 +121,10 @@ const App = () => {
                   including C++, Python, JavaScript, C#, and Java.
                 </p>
                 <p>
-                  Outside of programming, I really love writing, recording, and producing music.
-                  If you're interested in getting a track produced, mixed, or mastered, please reach out to me <a className="link" href="mailto:colin.ch.henderson@gmail.com">here</a>.
+                  Outside of programming, I really love writing, recording, and producing music! 
                 </p>
-                <p>
-                  This site was made with React + Vite. Feel free to take a look at the source in the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
+                <p className="subtitle">
+                  If you're interested in seeing some of my work, please check out the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
                 </p>
               </>
             )}
@@ -145,7 +145,7 @@ const App = () => {
             )}
             {selectedTab === "coursework" && (
               <>
-                <p>University of California, Santa Cruz</p>
+                <p>University of California, Santa Cruz - 3.6 GPA</p>
                 <p className="subtitle">2022 - Present</p>
                 <DataTable className="custom-datatable scrollable" value={classes} tableStyle={{ fontWeight: "100", minWidth: '30rem' }}>
                     <Column field="quarter" header="Quarter"></Column>
@@ -158,17 +158,20 @@ const App = () => {
             )}
             {selectedTab === "contact" && (
               <>
+                <p>Either fill out the form below, or shoot me a message on <a className="link" href="https://linkedin.com/in/colinchenderson/" target="_blank">LinkedIn</a>.</p>
                 <Form />
               </>
             )}
             {selectedTab === "resume" && (
               <>
-                <embed className="resume" src="/portfolio/resume.pdf"/>
+                <p className="subtitle">If you're on mobile, you can download it <a className="link" href="/resume.pdf" download>here</a>.</p>
+                <embed className="resume" src="/resume.pdf"/>
               </>
             )}
           </div>
         </div>
       </div>
+      <Analytics />
     </div>
   );
 };
