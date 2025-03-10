@@ -123,6 +123,9 @@ const App = () => {
                 <p>
                   Outside of programming, I really love writing, recording, and producing music! 
                 </p>
+                <p>
+                  Currently, I'm working on a pretty unique dating app using 
+                </p>
                 <p className="subtitle">
                   If you're interested in seeing some of my work, please check out the <span className="highlight" id="projects" onClick={() => handleTabClick("projects")}>projects </span>tab.
                 </p>
