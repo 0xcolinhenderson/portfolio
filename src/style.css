@@ -3,8 +3,9 @@
   --subtitle-color: rgb(118, 118, 118);
 }
 
-html, body {
-  font-family: 'Inter', sans-serif;
+html,
+body {
+  font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,11 +18,198 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(170deg, rgb(38, 38, 38) 5%, rgb(0, 0, 0));
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
   color: white;
+  background-color: hsla(0, 0%, 0%, 1);
+  background-image: radial-gradient(
+      circle at var(--x-0) var(--y-0),
+      var(--c-0) var(--s-start-0),
+      transparent var(--s-end-0)
+    ),
+    radial-gradient(
+      circle at var(--x-1) var(--y-1),
+      var(--c-1) var(--s-start-1),
+      transparent var(--s-end-1)
+    ),
+    radial-gradient(
+      circle at var(--x-2) var(--y-2),
+      var(--c-2) var(--s-start-2),
+      transparent var(--s-end-2)
+    ),
+    radial-gradient(
+      circle at var(--x-3) var(--y-3),
+      var(--c-3) var(--s-start-3),
+      transparent var(--s-end-3)
+    );
+  background-blend-mode: normal, normal, normal, normal;
+  animation: hero-gradient-animation 10s linear infinite alternate;
+}
+
+@property --c-0 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsla(266.99999999999983, 1%, 12%, 1);
+}
+
+@property --y-0 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 80%;
+}
+
+@property --x-0 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 85%;
+}
+
+@property --s-start-0 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 9%;
+}
+
+@property --s-end-0 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 55%;
+}
+
+@property --y-1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 24%;
+}
+
+@property --x-1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 60%;
+}
+
+@property --s-start-1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 5%;
+}
+
+@property --s-end-1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 72%;
+}
+
+@property --c-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsla(335.9999999999997, 2%, 22%, 1);
+}
+
+@property --y-2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 82%;
+}
+
+@property --c-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsla(53.999999999999886, 0%, 0%, 0.49);
+}
+
+@property --x-2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 13%;
+}
+
+@property --s-start-2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 5%;
+}
+
+@property --s-end-2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 52%;
+}
+
+@property --y-3 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 7%;
+}
+
+@property --c-3 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsla(299, 4%, 36%, 1);
+}
+
+@property --s-start-3 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 13%;
+}
+
+@property --s-end-3 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 68%;
+}
+
+@property --x-3 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 24%;
+}
+
+@keyframes hero-gradient-animation {
+  0% {
+    --c-0: hsla(266.99999999999983, 1%, 12%, 1);
+    --y-0: 80%;
+    --x-0: 85%;
+    --s-start-0: 9%;
+    --s-end-0: 55%;
+    --y-1: 24%;
+    --x-1: 60%;
+    --s-start-1: 5%;
+    --s-end-1: 72%;
+    --c-1: hsla(335.9999999999997, 2%, 22%, 1);
+    --y-2: 82%;
+    --c-2: hsla(53.999999999999886, 0%, 0%, 0.49);
+    --x-2: 13%;
+    --s-start-2: 5%;
+    --s-end-2: 52%;
+    --y-3: 7%;
+    --c-3: hsla(299, 4%, 36%, 1);
+    --s-start-3: 13%;
+    --s-end-3: 68%;
+    --x-3: 24%;
+  }
+
+  100% {
+    --c-0: hsla(266.99999999999943, 0%, 12%, 1);
+    --y-0: 94%;
+    --x-0: 31%;
+    --s-start-0: 9%;
+    --s-end-0: 55%;
+    --y-1: 25%;
+    --x-1: 2%;
+    --s-start-1: 5%;
+    --s-end-1: 72%;
+    --c-1: hsla(0, 4%, 19%, 1);
+    --y-2: 20%;
+    --c-2: hsla(54.000000000000036, 0%, 0%, 0.49);
+    --x-2: 98%;
+    --s-start-2: 5%;
+    --s-end-2: 52%;
+    --y-3: 92%;
+    --c-3: hsla(298.99999999999994, 3%, 41%, 1);
+    --s-start-3: 13%;
+    --s-end-3: 68%;
+    --x-3: 95%;
+  }
 }
 
 body::-webkit-scrollbar {
@@ -33,13 +221,13 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: rgb(20, 20, 20); 
-  border-radius: 10px; 
+  background: rgb(20, 20, 20);
+  border-radius: 10px;
 }
 
 body {
-  scrollbar-width: thin; 
-  scrollbar-color: black transparent; 
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
 }
 
 header {
@@ -60,7 +248,7 @@ h2 {
 
 h3 {
   padding-bottom: 0rem;
-  max-width:auto;
+  max-width: auto;
   margin: 0px;
 }
 
@@ -76,6 +264,11 @@ h3 {
 p {
   font-weight: 200;
   font-size: 1.4rem;
+}
+
+p a {
+  font-weight: 400;
+  color: var(--main-color);
 }
 
 .header-icons {
@@ -98,12 +291,12 @@ p {
   background: none;
   border: 1px solid white;
   cursor: pointer;
-  padding: 5px; 
+  padding: 5px;
   width: 0.9rem;
   height: 0.9rem;
-  border-radius: 8px; 
+  border-radius: 8px;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .linkButton img {
@@ -114,13 +307,15 @@ p {
 }
 
 .linkButton:hover img {
-  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
+  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%)
+    hue-rotate(-33deg) brightness(100%) contrast(150%);
 }
 
 #location {
-  width: 1.1rem; 
-  height: 1.1rem; 
-  filter: brightness(2) saturate(100%) invert(65%) sepia(100%) saturate(748%) hue-rotate(-1deg) brightness(100%) contrast(150%);
+  width: 1.1rem;
+  height: 1.1rem;
+  filter: brightness(2) saturate(100%) invert(65%) sepia(100%) saturate(748%)
+    hue-rotate(-1deg) brightness(100%) contrast(150%);
 }
 
 #location-text {
@@ -140,7 +335,6 @@ p {
   margin: 0 auto;
 }
 
-
 .menu {
   display: flex;
   width: 100%;
@@ -158,7 +352,7 @@ section {
   width: auto;
 }
 
-#resume img{
+#resume img {
   width: 1.2rem;
   height: 1.2rem;
   background: transparent;
@@ -166,7 +360,8 @@ section {
 }
 
 #resume:hover img {
-  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%) hue-rotate(-33deg) brightness(100%) contrast(150%);
+  filter: brightness(2) saturate(100%) invert(65%) sepia(200%) saturate(748%)
+    hue-rotate(-33deg) brightness(100%) contrast(150%);
 }
 
 .resumeDownload {
@@ -197,7 +392,7 @@ section {
 }
 
 .sectionHeader::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -206,7 +401,7 @@ section {
   height: 2px;
   border-radius: 5px;
   background-color: var(--main-color);
-  transition: width 0.5s ease-in-out; 
+  transition: width 0.5s ease-in-out;
 }
 
 .active {
@@ -217,12 +412,12 @@ section {
   width: 50%;
 }
 
-.title{
+.title {
   font-weight: 200;
   font-size: 3rem;
   text-align: left;
   margin-bottom: 2rem;
-  width: 100%
+  width: 100%;
 }
 
 .hover-effect {
@@ -277,7 +472,11 @@ form label {
 
 form input,
 form textarea {
-  background: linear-gradient(to top, rgba(144, 144, 144, 0), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    to top,
+    rgba(144, 144, 144, 0),
+    rgba(255, 255, 255, 0.05)
+  );
   border: 1px solid rgba(121, 121, 121, 0.328);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   color: white;
@@ -287,7 +486,7 @@ form textarea {
   width: 100%;
   font-size: 1.2rem;
   font-weight: 200;
-  font-family:inherit;
+  font-family: inherit;
 }
 
 form input[type="text"],
@@ -312,7 +511,7 @@ form .form-group-full {
 
 form .form-group-full textarea {
   height: 20rem;
-  resize: none; 
+  resize: none;
 }
 
 form .submit-container {
