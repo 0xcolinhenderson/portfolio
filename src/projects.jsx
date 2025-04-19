@@ -1,6 +1,6 @@
 export const projects = [
   {
-    image: "/projects/verity.jpg",
+    image: "/projects/verity.png",
     name: "Verity",
     subtitle:
       "Conversational fact-checking tool that uses AI to verify the accuracy of information in real-time.",
