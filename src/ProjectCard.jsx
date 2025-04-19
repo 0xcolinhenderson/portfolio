@@ -1,31 +1,42 @@
-import React, { useEffect, useRef } from 'react';
-import './ProjectCard.css';
+import React, { useEffect, useRef } from "react";
+import "./ProjectCard.css";
 
-const ProjectCard = ({ image, name, subtitle, languages, webLink, githubLink }) => {
+const ProjectCard = ({
+  image,
+  name,
+  subtitle,
+  languages,
+  webLink,
+  githubLink,
+}) => {
   const cardRef = useRef(null);
 
   const getLanguageClass = (language) => {
     switch (language.toLowerCase()) {
-      case 'javascript':
-        return 'language-javascript';
-      case 'react':
-        return 'language-react';
-      case 'next.js':
-        return 'language-nextjs';
-      case 'tailwind css':
-        return 'language-tailwind';
-      case 'python':
-        return 'language-python';
-      case 'material-ui':
-        return 'language-mui';
-      case 'flask':
-        return 'language-flask';
-      case 'bootstrap 5':
-        return 'language-bootstrap';
-      case 'pytorch':
-        return 'language-pytorch';
+      case "javascript":
+        return "language-javascript";
+      case "react":
+        return "language-react";
+      case "next.js":
+        return "language-nextjs";
+      case "tailwind css":
+        return "language-tailwind";
+      case "python":
+        return "language-python";
+      case "material-ui":
+        return "language-mui";
+      case "flask":
+        return "language-flask";
+      case "bootstrap 5":
+        return "language-bootstrap";
+      case "pytorch":
+        return "language-pytorch";
+      case "typescript":
+        return "language-typescript";
+      case "langchain":
+        return "language-langchain";
       default:
-        return '';
+        return "";
     }
   };
 
@@ -34,7 +45,7 @@ const ProjectCard = ({ image, name, subtitle, languages, webLink, githubLink }) 
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
           }
         });
       },
@@ -60,18 +71,39 @@ const ProjectCard = ({ image, name, subtitle, languages, webLink, githubLink }) 
         {subtitle && <p className="project-subtitle">{subtitle}</p>}
         <div className="project-languages">
           {languages.map((language, index) => (
-            <span key={index} className={`language-badge ${getLanguageClass(language)}`}>
+            <span
+              key={index}
+              className={`language-badge ${getLanguageClass(language)}`}
+            >
               {language}
             </span>
           ))}
         </div>
         <hr className="separator" />
         <div className="project-links">
-          {webLink && <a href={webLink} target="_blank" rel="noopener noreferrer" className="project-link">Website</a>}
+          {webLink && (
+            <a
+              href={webLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+            >
+              Website
+            </a>
+          )}
           {githubLink && (
-            <a href={githubLink} target="_blank" rel="noopener noreferrer" className="project-link">
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+            >
               GitHub
-              <img src="/github.svg" alt="github-icon" className="github-icon" />
+              <img
+                src="/github.svg"
+                alt="github-icon"
+                className="github-icon"
+              />
             </a>
           )}
         </div>
