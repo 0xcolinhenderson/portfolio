@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -128,15 +128,6 @@ const App = () => {
                 coursework
               </h3>
             </section>
-            <section id="contact" onClick={() => handleTabClick("contact")}>
-              <h3
-                className={`sectionHeader hover-effect ${
-                  selectedTab === "contact" ? "active" : ""
-                }`}
-              >
-                contact
-              </h3>
-            </section>
             <section id="resume" onClick={() => handleTabClick("resume")}>
               <h3
                 className={`sectionHeader hover-effect ${
@@ -151,7 +142,7 @@ const App = () => {
             {selectedTab === "intro" && (
               <>
                 <p>
-                  I'm currently a third year student at{" "}
+                  I'm currently a fourth year student at{" "}
                   <a
                     className="link"
                     target="_blank"
@@ -165,16 +156,15 @@ const App = () => {
                   I'm always actively looking for opportunities to learn and
                   grow as a developer. I have experience creating projects with
                   a variety of languages and frameworks, including <a>C++</a>,
-                  <a>Python</a>, <a>JavaScript</a>, and <a>Java</a>.
+                  <a>Python</a>, <a>JavaScript</a>, and <a>C#</a>.
                 </p>
                 <p>
                   I also have industry experience as a backend engineer intern,
-                  where I primarily worked with <a>C#</a> in the ASP.NET
+                  where I primarily worked with <a>C#</a> in the .NET
                   ecosystem.
                 </p>
                 <p>
-                  Outside of programming, I really love writing, recording, and
-                  producing music!
+                  Outside of programming, I'm super into music production. A majority of my personal projects have been tools to make my music production process easier.
                 </p>
                 <p className="subtitle">
                   If you're interested in seeing some of my work, please check
@@ -220,22 +210,6 @@ const App = () => {
                   <Column field="grade" header="Grade"></Column>
                   <Column field="units" header="Units"></Column>
                 </DataTable>
-              </>
-            )}
-            {selectedTab === "contact" && (
-              <>
-                <p>
-                  Either fill out the form below, or shoot me a message on{" "}
-                  <a
-                    className="link"
-                    href="https://linkedin.com/in/colinchenderson/"
-                    target="_blank"
-                  >
-                    LinkedIn
-                  </a>
-                  .
-                </p>
-                <Form />
               </>
             )}
             {selectedTab === "resume" && (
