@@ -73,7 +73,7 @@ const App = () => {
           <img id="location" src="/location.svg" alt="location-icon" />
           <p id="location-text">santa cruz, ca</p>
         </div>
-        <h2 className="updated-text">[ last updated: {lastUpdated} ]</h2>
+        <h2 className="updated-text">[ last updated: 6/16/2026 ]</h2>
       </header>
       <div id="content">
         <section id="intro">
@@ -116,18 +116,6 @@ const App = () => {
                 projects
               </h3>
             </section>
-            <section
-              id="coursework"
-              onClick={() => handleTabClick("coursework")}
-            >
-              <h3
-                className={`sectionHeader hover-effect ${
-                  selectedTab === "coursework" ? "active" : ""
-                }`}
-              >
-                coursework
-              </h3>
-            </section>
             <section id="resume" onClick={() => handleTabClick("resume")}>
               <h3
                 className={`sectionHeader hover-effect ${
@@ -142,7 +130,7 @@ const App = () => {
             {selectedTab === "intro" && (
               <>
                 <p>
-                  I'm currently a fourth year student at{" "}
+                  I'm a recent graduate from{" "}
                   <a
                     className="link"
                     target="_blank"
@@ -150,18 +138,21 @@ const App = () => {
                   >
                     UC Santa Cruz
                   </a>{" "}
-                  studying in Computer Science.
+                  with a bachelor's in Computer Science.
                 </p>
                 <p>
                   I'm always actively looking for opportunities to learn and
                   grow as a developer. I have experience creating projects with
-                  a variety of languages and frameworks, including <a>C++</a>,
-                  <a>Python</a>, <a>JavaScript</a>, and <a>C#</a>.
+                  a variety of languages and frameworks, including <a>C#</a>,
+                  <a>Python</a>, <a>JavaScript</a>, and <a>C++</a>.
                 </p>
                 <p>
                   I also have industry experience as a backend engineer intern,
                   where I primarily worked with <a>C#</a> in the .NET
                   ecosystem.
+                </p>
+                <p>
+                  I'm a really big fan of .NET, and in my free time I love making games in Unity.
                 </p>
                 <p>
                   Outside of programming, I'm super into music production. A majority of my personal projects have been tools to make my music production process easier.
@@ -194,23 +185,6 @@ const App = () => {
                   />
                 ))}
               </div>
-            )}
-            {selectedTab === "coursework" && (
-              <>
-                <p>University of California, Santa Cruz - 3.6 GPA</p>
-                <p className="subtitle">2022 - Present</p>
-                <DataTable
-                  className="custom-datatable scrollable"
-                  value={classes}
-                  tableStyle={{ fontWeight: "100", minWidth: "30rem" }}
-                >
-                  <Column field="quarter" header="Quarter"></Column>
-                  <Column field="title" header="Title"></Column>
-                  <Column field="name" header="Name"></Column>
-                  <Column field="grade" header="Grade"></Column>
-                  <Column field="units" header="Units"></Column>
-                </DataTable>
-              </>
             )}
             {selectedTab === "resume" && (
               <>
